@@ -17,6 +17,10 @@ const playBtn = document.querySelector('#play-btn');
 const msgEl = document.querySelector('#msg');
 const boardEls = document.querySelectorAll('.game-board > div');
 
+// board columns **REFORMAT WHEN SCALED UP
+const col1 = [boardEls[6],boardEls[3],boardEls[0]];
+const col2 = [boardEls[7],boardEls[4],boardEls[1]];
+const col3 = [boardEls[8],boardEls[5],boardEls[2]];
 
 // init
 playBtn.addEventListener('click', init);
