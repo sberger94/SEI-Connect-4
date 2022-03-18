@@ -15,7 +15,7 @@ const player1Bank = document.querySelector('.player1-bank');
 const player2Bank = document.querySelector('.player2-bank');
 const playBtn = document.querySelector('#play-btn');
 const msgEl = document.querySelector('#msg');
-const boardEl = document.querySelector('.game-board');
+const boardEls = document.querySelectorAll('.game-board > div');
 
 
 // init
@@ -23,6 +23,7 @@ playBtn.addEventListener('click', init);
 
 function init(e){
     console.log('Lets Play!');
+    playBtn.innerText = 'Restart Game';
     playerTurn = playerId[Math.floor(Math.random()*2)];
     if(playerTurn === 1){
         msgEl.innerText = `${player1Bank.innerText} goes first!`
