@@ -17,7 +17,7 @@ const player2Bank = document.querySelector('.player2');
 const playBtn = document.querySelector('#play-btn');
 const msgEl = document.querySelector('#msg');
 const boardEl = document.querySelector('.game-board');
-console.log(boardEl)
+
 
 // init
 
