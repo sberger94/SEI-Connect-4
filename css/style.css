@@ -14,13 +14,13 @@
 
   main {
     display: grid;
-    grid-template-columns: 1fr 500px 1fr;
+    grid-template-columns: 1fr 4fr 1fr;
   }
 
   #column-selector {
     grid-area: 1 / 1 / 2 / 4;
     display: flex;
-    width: 500px;
+    width: 584px;
     margin: auto;
     justify-content: space-around;
   }
@@ -28,11 +28,11 @@
   .game-board {
     grid-area: 2 / 2 / 3 / 3;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    gap: 5px;
-    width: 500px;
-    height: 500px;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    gap: 4px;
+    width: fit-content;
+    height: fit-content;
     background-color: cadetblue;
     margin: auto;
     }
@@ -40,14 +40,47 @@
     #div0 { grid-area: 1 / 1 / 2 / 2; }
     #div1 { grid-area: 1 / 2 / 2 / 3; }
     #div2 { grid-area: 1 / 3 / 2 / 4; }
-    #div3 { grid-area: 2 / 1 / 3 / 2; }
-    #div4 { grid-area: 2 / 2 / 3 / 3; }
-    #div5 { grid-area: 2 / 3 / 3 / 4; }
-    #div6 { grid-area: 3 / 1 / 4 / 2; }
-    #div7 { grid-area: 3 / 2 / 4 / 3; }
-    #div8 { grid-area: 3 / 3 / 4 / 4; }
+    #div3 { grid-area: 1 / 4 / 2 / 5; }
+    #div4 { grid-area: 1 / 5 / 2 / 6; }
+    #div5 { grid-area: 1 / 6 / 2 / 7; }
+    #div6 { grid-area: 1 / 7 / 2 / 8; }
+    #div7 { grid-area: 2 / 1 / 3 / 2; }
+    #div8 { grid-area: 2 / 2 / 3 / 3; }
+    #div9 { grid-area: 2 / 3 / 3 / 4; }
+    #div10 { grid-area: 2 / 4 / 3 / 5; }
+    #div11 { grid-area: 2 / 5 / 3 / 6; }
+    #div12 { grid-area: 2 / 6 / 3 / 7; }
+    #div13 { grid-area: 2 / 7 / 3 / 8; }
+    #div14 { grid-area: 3 / 1 / 4 / 2; }
+    #div15 { grid-area: 3 / 2 / 4 / 3; }
+    #div16 { grid-area: 3 / 3 / 4 / 4; }
+    #div17 { grid-area: 3 / 4 / 4 / 5; }
+    #div18 { grid-area: 3 / 5 / 4 / 6; }
+    #div19 { grid-area: 3 / 6 / 4 / 7; }
+    #div20 { grid-area: 3 / 7 / 4 / 8; }
+    #div21 { grid-area: 4 / 1 / 5 / 2; }
+    #div22 { grid-area: 4 / 2 / 5 / 3; }
+    #div23 { grid-area: 4 / 3 / 5 / 4; }
+    #div24 { grid-area: 4 / 4 / 5 / 5; }
+    #div25 { grid-area: 4 / 5 / 5 / 6; }
+    #div26 { grid-area: 4 / 6 / 5 / 7; }
+    #div27 { grid-area: 4 / 7 / 5 / 8; }
+    #div28 { grid-area: 5 / 1 / 6 / 2; }
+    #div29 { grid-area: 5 / 2 / 6 / 3; }
+    #div30 { grid-area: 5 / 3 / 6 / 4; }
+    #div31 { grid-area: 5 / 4 / 6 / 5; }
+    #div32 { grid-area: 5 / 5 / 6 / 6; }
+    #div33 { grid-area: 5 / 6 / 6 / 7; }
+    #div34 { grid-area: 5 / 7 / 6 / 8; }
+    #div35 { grid-area: 6 / 1 / 7 / 2; }
+    #div36 { grid-area: 6 / 2 / 7 / 3; }
+    #div37 { grid-area: 6 / 3 / 7 / 4; }
+    #div38 { grid-area: 6 / 4 / 7 / 5; }
+    #div39 { grid-area: 6 / 5 / 7 / 6; }
+    #div40 { grid-area: 6 / 6 / 7 / 7; }
+    #div41 { grid-area: 6 / 7 / 7 / 8; }
   
-    .player1-bank {
+  .player1-bank {
     grid-area: 1 / 1 / 3 / 2;
     justify-self: center;
   }
@@ -58,8 +91,8 @@
   }
 
   .player1-token {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     background-color: darkred;
     justify-self: center;
@@ -67,8 +100,8 @@
   }
 
   .player2-token {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     background-color: goldenrod;
     justify-self: center;
@@ -76,8 +109,8 @@
   }
 
   .empty-space {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     background-color: #acd184;
     justify-self: center;

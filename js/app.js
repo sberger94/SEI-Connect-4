@@ -40,16 +40,19 @@ function init(e){
     gameBoard.forEach(column => {
         column.forEach(element => element.className = 'empty-space');
     });
-}
-console.log(playerTurn)
+};
 
 function choosePlayer(){
     return playerTurn = playerId[Math.floor(Math.random()*2)];
-}
+};
 
 function turnAlternate(){
-
-}
+    if(playerTurn === 1){
+        playerTurn = 2;
+    } else {
+        playerTurn = 1;
+    }
+};
 
 // render
 function render(){
