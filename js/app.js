@@ -30,7 +30,8 @@ document.querySelector('#column-selector').addEventListener('click', handleClick
 function init(e){
     console.log('Lets Play!');
     playBtn.innerText = 'Restart Game';
-    playerTurn = playerId[Math.floor(Math.random()*2)];
+    // playerTurn = playerId[Math.floor(Math.random()*2)];
+    choosePlayer();
     if(playerTurn === 1){
         msgEl.innerText = `${player1Bank.innerText} goes first!`
     } else {
@@ -39,6 +40,11 @@ function init(e){
     gameBoard.forEach(column => {
         column.forEach(element => element.className = 'empty-space');
     });
+}
+console.log(playerTurn)
+
+function choosePlayer(){
+    return playerTurn = playerId[Math.floor(Math.random()*2)];
 }
 
 function turnAlternate(){
