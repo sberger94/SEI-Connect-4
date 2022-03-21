@@ -22,8 +22,9 @@ const col1 = [boardEls[6],boardEls[3],boardEls[0]];
 const col2 = [boardEls[7],boardEls[4],boardEls[1]];
 const col3 = [boardEls[8],boardEls[5],boardEls[2]];
 
-// init
+// init and event listeners
 playBtn.addEventListener('click', init);
+document.querySelector('#column-selector').addEventListener('click', handleClick);
 
 function init(e){
     console.log('Lets Play!');
@@ -37,5 +38,13 @@ function init(e){
 }
 
 // render
+function render(){
+
+}
+
+// button functions
+function handleClick(e){
+    console.log(e.target.tagName)
+}
 
 // reset/replay
