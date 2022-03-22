@@ -16,11 +16,15 @@ const playBtn = document.querySelector('#play-btn');
 const msgEl = document.querySelector('#msg');
 const boardEls = document.querySelectorAll('.game-board > div');
 
-// board columns **REFORMAT WHEN SCALED UP
-const col1 = [boardEls[6],boardEls[3],boardEls[0]];
-const col2 = [boardEls[7],boardEls[4],boardEls[1]];
-const col3 = [boardEls[8],boardEls[5],boardEls[2]];
-const gameBoard = [col1, col2, col3];
+// board columns
+const col1 = [boardEls[35],boardEls[28],boardEls[21],boardEls[14],boardEls[7],boardEls[0]];
+const col2 = [boardEls[36],boardEls[29],boardEls[22],boardEls[15],boardEls[8],boardEls[1]];
+const col3 = [boardEls[37],boardEls[30],boardEls[23],boardEls[16],boardEls[9],boardEls[2]];
+const col4 = [boardEls[38],boardEls[31],boardEls[24],boardEls[17],boardEls[10],boardEls[3]]
+const col5 = [boardEls[39],boardEls[32],boardEls[25],boardEls[18],boardEls[11],boardEls[4]]
+const col6 = [boardEls[40],boardEls[33],boardEls[26],boardEls[19],boardEls[12],boardEls[5]]
+const col7 = [boardEls[41],boardEls[34],boardEls[27],boardEls[20],boardEls[13],boardEls[6]]
+const gameBoard = [col1, col2, col3, col4, col5, col6, col7];
 console.log(gameBoard)
 
 // init and event listeners
@@ -46,13 +50,18 @@ function choosePlayer(){
     return playerTurn = playerId[Math.floor(Math.random()*2)];
 };
 
-function turnAlternate(){
+function alternateTurn(){
     if(playerTurn === 1){
         playerTurn = 2;
     } else {
         playerTurn = 1;
     }
 };
+
+function placeMarker(marker, column){
+    let availableIdx = column.findIndex(element => element.className = 'empty-space');
+    column[availableIdx].className = marker;
+}
 
 // render
 function render(){
@@ -65,6 +74,17 @@ function handleClick(e){
         console.log(e.target.id);
     } if(e.target.tagName === 'SECTION'){
         return;
+    }
+    
+    let btnIndex = parseInt(e.target.id.slice(-1));
+    let columnChoice = gameBoard[btnIndex];
+    
+    if(playerTurn === 1){
+        placeMarker('player1-token', columnChoice);
+        alternateTurn();
+    } else {
+        placeMarker('player2-token', columnChoice);
+        alternateTurn();
     }
     
 }
