@@ -58,13 +58,17 @@ function alternateTurn(){
     } else {
         playerTurn = 1;
     }
+    msgEl.innerText = `Player ${playerTurn}'s turn!`
 };
 
 function placeMarker(marker, column){
     let availableIdx = column.findIndex(element => element.className === 'empty-space');
-    column[availableIdx].className = marker;
-    console.log(column)
-    console.log(availableIdx)
+    if(availableIdx !== -1){
+        column[availableIdx].className = marker;
+    } else {
+        return msgEl.innerText = `That row is full! Try again, Player ${playerTurn}.`
+    };
+    alternateTurn();
 }
 
 // render
@@ -85,10 +89,8 @@ function handleClick(e){
     
     if(playerTurn === 1){
         placeMarker('player1-token', columnChoice);
-        alternateTurn();
     } else {
         placeMarker('player2-token', columnChoice);
-        alternateTurn();
     }
     
 }
