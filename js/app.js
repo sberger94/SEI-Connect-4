@@ -41,9 +41,11 @@ function init(e){
     } else {
         msgEl.innerText = `${player2Bank.innerText} goes first!`
     };
-    gameBoard.forEach(column => {
+    currentBoard = [...gameBoard];
+    currentBoard.forEach(column => {
         column.forEach(element => element.className = 'empty-space');
     });
+    console.log(currentBoard)
 };
 
 function choosePlayer(){
@@ -59,8 +61,10 @@ function alternateTurn(){
 };
 
 function placeMarker(marker, column){
-    let availableIdx = column.findIndex(element => element.className = 'empty-space');
+    let availableIdx = column.findIndex(element => element.className === 'empty-space');
     column[availableIdx].className = marker;
+    console.log(column)
+    console.log(availableIdx)
 }
 
 // render
@@ -77,7 +81,7 @@ function handleClick(e){
     }
     
     let btnIndex = parseInt(e.target.id.slice(-1));
-    let columnChoice = gameBoard[btnIndex];
+    let columnChoice = currentBoard[btnIndex];
     
     if(playerTurn === 1){
         placeMarker('player1-token', columnChoice);
