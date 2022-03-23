@@ -54,7 +54,8 @@ function init(e){
     currentBoard.forEach(column => {
         column.forEach(element => element.className = 'empty-space');
     });
-    win = false
+    win = false;
+    columnBtns.forEach(button => button.disabled = false);
 };
 
 // player selection and alternation
@@ -79,7 +80,6 @@ function placeMarker(marker, column){
     } else {
         return msgEl.innerText = `That row is full! Try again, Player ${playerTurn}.`;
     };
-    alternateTurn();
 }
 
 // win check
@@ -111,9 +111,8 @@ function render(){
 
 // button functions
 function handleClick(e){
-    if(e.target.tagName === 'BUTTON'){
-        console.log(e.target.id);
-    } if(e.target.tagName === 'SECTION'){
+    //   
+    if(e.target.tagName === 'SECTION'){
         return;
     }
     
@@ -125,7 +124,18 @@ function handleClick(e){
     } else {
         placeMarker('player2-token', columnChoice);
     };
-    checkWin()
+    checkWin();
+
+    if(playerTurn === 1 && win === true){
+        msgEl.innerText = `Player ${playerTurn} Wins!`;
+        columnBtns.forEach(button => button.disabled = true);
+        return;
+    } else if(playerTurn === 2 && win === true){
+        msgEl.innerText = `Player ${playerTurn} Wins!`;
+        columnBtns.forEach(button => button.disabled = true);
+        return;
+    };
+    alternateTurn();
 };
 
 // reset/replay
