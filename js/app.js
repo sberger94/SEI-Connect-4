@@ -5,8 +5,8 @@ const playerId = [1,2];
 let player1Token; // player 1's gamepiece
 let player2Token; // player 2's gamepiece
 let playerTurn; // Who's turn it is
-let currentBoard // positions of both players
-let winner;
+let currentBoard; // positions of both players
+let win;
 
 // DOM elements
 const columnBtns = document.querySelectorAll('.columnbtn');
@@ -31,6 +31,7 @@ console.log(gameBoard)
 playBtn.addEventListener('click', init);
 document.querySelector('#column-selector').addEventListener('click', handleClick);
 
+// initialize function
 function init(e){
     console.log('Lets Play!');
     playBtn.innerText = 'Restart Game';
@@ -45,9 +46,10 @@ function init(e){
     currentBoard.forEach(column => {
         column.forEach(element => element.className = 'empty-space');
     });
-    console.log(currentBoard)
+    win = false
 };
 
+// player selection and alternation
 function choosePlayer(){
     return playerTurn = playerId[Math.floor(Math.random()*2)];
 };
@@ -58,23 +60,41 @@ function alternateTurn(){
     } else {
         playerTurn = 1;
     }
-    msgEl.innerText = `Player ${playerTurn}'s turn!`
+    msgEl.innerText = `Player ${playerTurn}'s turn!`;
 };
 
+// marker placement
 function placeMarker(marker, column){
     let availableIdx = column.findIndex(element => element.className === 'empty-space');
     if(availableIdx !== -1){
         column[availableIdx].className = marker;
     } else {
-        return msgEl.innerText = `That row is full! Try again, Player ${playerTurn}.`
+        return msgEl.innerText = `That row is full! Try again, Player ${playerTurn}.`;
     };
     alternateTurn();
 }
 
+// win check
+function checkWin(){
+    // column --> for each column check if four markers are adjacent
+    for(const column of currentBoard){
+        for(let i = 0; i < 3; i++){
+            if((column[i].className === column[i+1].className) && (column[i].className === column[i+2].className) && (column[i].className === column[i+3].className) && (column[i].className !== 'empty-space')){
+                win = true;
+            }
+        }
+    }
+    
+    // row --> for each row check if four markers are adjacent
+    
+    // diagonal
+    
+    // draw
+};
 // render
 function render(){
 
-}
+};
 
 // button functions
 function handleClick(e){
@@ -91,8 +111,8 @@ function handleClick(e){
         placeMarker('player1-token', columnChoice);
     } else {
         placeMarker('player2-token', columnChoice);
-    }
-    
-}
+    };
+    checkWin()
+};
 
 // reset/replay
