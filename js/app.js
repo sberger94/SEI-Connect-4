@@ -91,13 +91,15 @@ function checkWin(){
                 win = true;
             }
         }
-    }
-    
+    };  
     // row --> for each row check if four markers are adjacent
     for(const row of gameBoardRows){
-        console.log(row)
-    }
-
+        for(let i = 0; i < 4; i++){
+            if((row[i].className === row[i+1].className) && (row[i].className === row[i+2].className) && (row[i].className === row[i+3].className) && (row[i].className !== 'empty-space')){
+                win = true;
+            }
+        }
+    };
     // diagonal
     
     // draw
