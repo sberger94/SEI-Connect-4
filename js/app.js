@@ -20,12 +20,20 @@ const boardEls = document.querySelectorAll('.game-board > div');
 const col1 = [boardEls[35],boardEls[28],boardEls[21],boardEls[14],boardEls[7],boardEls[0]];
 const col2 = [boardEls[36],boardEls[29],boardEls[22],boardEls[15],boardEls[8],boardEls[1]];
 const col3 = [boardEls[37],boardEls[30],boardEls[23],boardEls[16],boardEls[9],boardEls[2]];
-const col4 = [boardEls[38],boardEls[31],boardEls[24],boardEls[17],boardEls[10],boardEls[3]]
-const col5 = [boardEls[39],boardEls[32],boardEls[25],boardEls[18],boardEls[11],boardEls[4]]
-const col6 = [boardEls[40],boardEls[33],boardEls[26],boardEls[19],boardEls[12],boardEls[5]]
-const col7 = [boardEls[41],boardEls[34],boardEls[27],boardEls[20],boardEls[13],boardEls[6]]
+const col4 = [boardEls[38],boardEls[31],boardEls[24],boardEls[17],boardEls[10],boardEls[3]];
+const col5 = [boardEls[39],boardEls[32],boardEls[25],boardEls[18],boardEls[11],boardEls[4]];
+const col6 = [boardEls[40],boardEls[33],boardEls[26],boardEls[19],boardEls[12],boardEls[5]];
+const col7 = [boardEls[41],boardEls[34],boardEls[27],boardEls[20],boardEls[13],boardEls[6]];
 const gameBoard = [col1, col2, col3, col4, col5, col6, col7];
-console.log(gameBoard)
+
+// board rows
+const row1 = [boardEls[35],boardEls[36],boardEls[37],boardEls[38],boardEls[39],boardEls[40],boardEls[41]];
+const row2 = [boardEls[28],boardEls[29],boardEls[30],boardEls[31],boardEls[32],boardEls[33],boardEls[34]];
+const row3 = [boardEls[21],boardEls[22],boardEls[23],boardEls[24],boardEls[25],boardEls[26],boardEls[27]];
+const row4 = [boardEls[14],boardEls[15],boardEls[16],boardEls[17],boardEls[18],boardEls[19],boardEls[20]];
+const row5 = [boardEls[7],boardEls[8],boardEls[9],boardEls[10],boardEls[11],boardEls[12],boardEls[13]];
+const row6 = [boardEls[0],boardEls[1],boardEls[2],boardEls[3],boardEls[4],boardEls[5],boardEls[6]];
+const gameBoardRows = [row1, row2, row3, row4, row5, row6];
 
 // init and event listeners
 playBtn.addEventListener('click', init);
@@ -86,7 +94,10 @@ function checkWin(){
     }
     
     // row --> for each row check if four markers are adjacent
-    
+    for(const row of gameBoardRows){
+        console.log(row)
+    }
+
     // diagonal
     
     // draw
