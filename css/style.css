@@ -121,7 +121,7 @@
     height: 80px;
     border-radius: 50%;
     background-color: darkred;
-    border: 3px solid red;
+    border: 3px solid whitesmoke;
     justify-self: center;
   }
 
@@ -149,7 +149,7 @@
     height: 80px;
     border-radius: 50%;
     background-color: goldenrod;
-    border: 3px solid yellow;
+    border: 3px solid whitesmoke;
     justify-self: center;
   }
 
