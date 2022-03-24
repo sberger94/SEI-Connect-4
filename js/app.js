@@ -10,8 +10,8 @@ let drawArr;
 
 // DOM elements
 const columnBtns = document.querySelectorAll('.columnbtn');
-const player1Bank = document.querySelector('.player1-bank');
-const player2Bank = document.querySelector('.player2-bank');
+const player1Marker = document.querySelector('#player1-marker');
+const player2Marker = document.querySelector('#player2-marker');
 const playBtn = document.querySelector('#play-btn');
 const msgEl = document.querySelector('#msg');
 const boardEls = document.querySelectorAll('.game-board > div');
@@ -43,11 +43,15 @@ document.querySelector('#column-selector').addEventListener('click', handleClick
 function init(e){
     console.log('Lets Play!');
     playBtn.innerText = 'Restart Game';
+    player1Marker.id = 'player1-marker';
+    player2Marker.id = 'player2-marker';
     choosePlayer();
     if(playerTurn === 1){
-        msgEl.innerText = `${player1Bank.innerText} goes first!`;
+        msgEl.innerText = `Player ${playerTurn} goes first!`;
+        player1Marker.id = 'player1-marker-active';
     } else {
-        msgEl.innerText = `${player2Bank.innerText} goes first!`;
+        msgEl.innerText = `Player ${playerTurn} goes first!`;
+        player2Marker.id = 'player2-marker-active';
     };
     currentBoard = [...gameBoard];
     currentBoard.forEach(column => {
@@ -66,12 +70,13 @@ function choosePlayer(){
 function alternateTurn(){
     if(playerTurn === 1){
         playerTurn = 2;
+        player1Marker.id = 'player1-marker';
+        player2Marker.id = 'player2-marker-active';
     } else {
         playerTurn = 1;
+        player1Marker.id = 'player1-marker-active';
+        player2Marker.id = 'player2-marker';
     }
-    // msgEl.innerText = `Player ${playerTurn}'s turn!`;
-    // if(msgEl.innerText.includes('That row is full!')){return}
-    // msgEl.innerText = `Player ${playerTurn}'s turn!`;
 };
 
 // marker placement
@@ -121,11 +126,6 @@ function checkWin(){
     }
 };
 
-// render
-function render(){
-
-};
-
 // button functions
 function handleClick(e){
     //   
@@ -165,5 +165,3 @@ function handleClick(e){
     }
     alternateTurn();
 };
-
-// reset/replay
