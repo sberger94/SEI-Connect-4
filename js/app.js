@@ -2,11 +2,11 @@
 const playerId = [1,2];
 
 // state
-let player1Token; // player 1's gamepiece
-let player2Token; // player 2's gamepiece
 let playerTurn; // Who's turn it is
 let currentBoard; // positions of both players
 let win;
+let draw;
+let drawArr;
 
 // DOM elements
 const columnBtns = document.querySelectorAll('.columnbtn');
@@ -43,7 +43,6 @@ document.querySelector('#column-selector').addEventListener('click', handleClick
 function init(e){
     console.log('Lets Play!');
     playBtn.innerText = 'Restart Game';
-    // playerTurn = playerId[Math.floor(Math.random()*2)];
     choosePlayer();
     if(playerTurn === 1){
         msgEl.innerText = `${player1Bank.innerText} goes first!`
@@ -55,6 +54,7 @@ function init(e){
         column.forEach(element => element.className = 'empty-space');
     });
     win = false;
+    draw = false;
     columnBtns.forEach(button => button.disabled = false);
 };
 
@@ -103,7 +103,17 @@ function checkWin(){
     // diagonal
     
     // draw
+    drawArr = [];
+    for(i = 0; i < boardEls.length; i++){
+        drawArr.push(boardEls[i].className);
+    }
+    if(drawArr.includes('empty-space')){
+        draw = false;
+    } else {
+        draw = true;
+    }
 };
+
 // render
 function render(){
 
@@ -112,9 +122,7 @@ function render(){
 // button functions
 function handleClick(e){
     //   
-    if(e.target.tagName === 'SECTION'){
-        return;
-    }
+    if(e.target.tagName === 'SECTION'){return;}
     
     let btnIndex = parseInt(e.target.id.slice(-1));
     let columnChoice = currentBoard[btnIndex];
@@ -128,13 +136,22 @@ function handleClick(e){
 
     if(playerTurn === 1 && win === true){
         msgEl.innerText = `Player ${playerTurn} Wins!`;
+        playBtn.innerText = `Play Again`;
         columnBtns.forEach(button => button.disabled = true);
         return;
     } else if(playerTurn === 2 && win === true){
         msgEl.innerText = `Player ${playerTurn} Wins!`;
+        playBtn.innerText = `Play Again`;
         columnBtns.forEach(button => button.disabled = true);
         return;
     };
+
+    if(draw === true){
+        msgEl.innerText = `It's a Draw!`;
+        playBtn.innerText = `Play Again`;
+        columnBtns.forEach(button => button.disabled = true);
+        return;
+    }
     alternateTurn();
 };
 
