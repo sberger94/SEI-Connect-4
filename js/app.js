@@ -45,9 +45,9 @@ function init(e){
     playBtn.innerText = 'Restart Game';
     choosePlayer();
     if(playerTurn === 1){
-        msgEl.innerText = `${player1Bank.innerText} goes first!`
+        msgEl.innerText = `${player1Bank.innerText} goes first!`;
     } else {
-        msgEl.innerText = `${player2Bank.innerText} goes first!`
+        msgEl.innerText = `${player2Bank.innerText} goes first!`;
     };
     currentBoard = [...gameBoard];
     currentBoard.forEach(column => {
@@ -69,7 +69,9 @@ function alternateTurn(){
     } else {
         playerTurn = 1;
     }
-    msgEl.innerText = `Player ${playerTurn}'s turn!`;
+    // msgEl.innerText = `Player ${playerTurn}'s turn!`;
+    // if(msgEl.innerText.includes('That row is full!')){return}
+    // msgEl.innerText = `Player ${playerTurn}'s turn!`;
 };
 
 // marker placement
@@ -77,6 +79,11 @@ function placeMarker(marker, column){
     let availableIdx = column.findIndex(element => element.className === 'empty-space');
     if(availableIdx !== -1){
         column[availableIdx].className = marker;
+        if(playerTurn === 2){
+            return msgEl.innerText = `Player 1's turn!`;
+        } else if(playerTurn === 1){
+            return msgEl.innerText = `Player 2's turn!`;
+        };
     } else {
         return msgEl.innerText = `That row is full! Try again, Player ${playerTurn}.`;
     };
@@ -84,7 +91,7 @@ function placeMarker(marker, column){
 
 // win check
 function checkWin(){
-    // column --> for each column check if four markers are adjacent
+    // column
     for(const column of currentBoard){
         for(let i = 0; i < 3; i++){
             if((column[i].className === column[i+1].className) && (column[i].className === column[i+2].className) && (column[i].className === column[i+3].className) && (column[i].className !== 'empty-space')){
@@ -92,7 +99,7 @@ function checkWin(){
             }
         }
     };  
-    // row --> for each row check if four markers are adjacent
+    // row
     for(const row of gameBoardRows){
         for(let i = 0; i < 4; i++){
             if((row[i].className === row[i+1].className) && (row[i].className === row[i+2].className) && (row[i].className === row[i+3].className) && (row[i].className !== 'empty-space')){
@@ -122,16 +129,20 @@ function render(){
 // button functions
 function handleClick(e){
     //   
-    if(e.target.tagName === 'SECTION'){return;}
+    if(e.target.tagName === 'SECTION'){return}
     
     let btnIndex = parseInt(e.target.id.slice(-1));
     let columnChoice = currentBoard[btnIndex];
     
+    console.log(playerTurn)
     if(playerTurn === 1){
         placeMarker('player1-token', columnChoice);
+        if(msgEl.innerText.includes('That row is full!')){return}
     } else {
         placeMarker('player2-token', columnChoice);
+        if(msgEl.innerText.includes('That row is full!')){return}
     };
+    // if(msgEl.innerText.includes('That row is full!')){return}
     checkWin();
 
     if(playerTurn === 1 && win === true){
