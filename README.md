@@ -7,12 +7,14 @@ A simple Connect 4 game built with Javascript, CSS, and HTML
 
 ## Technologies Used
 
-**HTML** 
+**HTML** HTML was used to 
 
 **CSS**
 
 **Javascript** 
 
 ## Getting Started
+
+[Play Connect 4!](https://sberger94.github.io/SEI-Connect-4/)
 
 ## Next Steps
