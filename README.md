@@ -15,7 +15,7 @@ A simple Connect 4 game built with Javascript, CSS, and HTML
 
 ## Getting Started
 
-The rules of Connect 4 are simple: try to get four of the same color marker in adjacent positions. The current version of this game only registers a win with four markers adjacent in a row or column, but I hope to update it to register diagonal wins. Decide who is Player 1 and who is Player 2 and have fun!
+The rules of Connect 4 are simple: try to get four of the same color marker in adjacent positions. The current version of this game only registers a win with four markers adjacent in a row or column, but I hope to update it to register diagonal wins. Decide who is Player 1 and who is Player 2 and click the 'Start Game' button. The game will choose a random player to go first. Click wich column you want to drop your gamepiece into and have fun!
 
 [Play Connect 4!](https://sberger94.github.io/SEI-Connect-4/)
 
